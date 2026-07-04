@@ -79,18 +79,11 @@ a{color:inherit;text-decoration:none}
 .content{max-width:1280px;margin:0 auto;padding:8px 36px 70px}
 
 /* 전체 요약 - 글래스모피즘 */
-.summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px}
-.summary-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--r-lg);padding:22px;backdrop-filter:blur(16px);position:relative;overflow:hidden;animation:fadeUp .5s ease backwards}
-.summary-card:nth-child(1){animation-delay:.05s}
-.summary-card:nth-child(2){animation-delay:.1s}
-.summary-card:nth-child(3){animation-delay:.15s}
-.summary-card:nth-child(4){animation-delay:.2s}
-.summary-card::before{content:"";position:absolute;top:-40%;right:-30%;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,rgba(91,148,232,.25),transparent 70%)}
-.summary-lb{font-size:10.5px;font-weight:700;color:rgba(255,255,255,.45);letter-spacing:.09em;text-transform:uppercase;margin-bottom:10px;position:relative}
-.summary-v{font-size:32px;font-weight:900;color:#fff;letter-spacing:-.03em;line-height:1;position:relative}
-.summary-v small{font-size:14px;font-weight:600;color:rgba(255,255,255,.42)}
-.summary-sub{font-size:11.5px;color:rgba(255,255,255,.38);margin-top:9px;position:relative}
-.summary-icon{position:absolute;bottom:14px;right:16px;font-size:22px;opacity:.2}
+.mini-summary{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:26px;padding:14px 20px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:var(--r);backdrop-filter:blur(12px);animation:fadeUp .5s ease}
+.mini-item{display:flex;align-items:center;gap:8px}
+.mini-ico{font-size:15px;opacity:.7}
+.mini-lb{font-size:12px;color:rgba(255,255,255,.45);font-weight:600}
+.mini-v{font-size:14px;color:#fff;font-weight:800}
 
 /* 섹션 헤더 */
 .sec-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;animation:fadeUp .5s ease .2s backwards}
@@ -140,6 +133,28 @@ a{color:inherit;text-decoration:none}
 .cc-status.loading{background:var(--surface2);color:var(--ink4)}
 
 /* 메모란 */
+/* 집단대출 접수 실시간 상황판 */
+.loan-board{background:linear-gradient(135deg,var(--surface2),#F7FAFF);border:1px solid var(--ink5);border-radius:var(--r);padding:14px 16px;margin-bottom:12px}
+.loan-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.loan-t{font-size:12px;font-weight:800;color:var(--ink2)}
+.loan-edit-btn{font-size:10.5px;font-weight:700;color:var(--blue-500);background:none;border:1px solid var(--blue-200);border-radius:6px;padding:3px 9px;cursor:pointer;transition:.15s}
+.loan-edit-btn:hover{background:var(--blue-100)}
+.loan-display{display:block}
+.loan-num{display:flex;align-items:baseline;gap:4px;margin-bottom:8px}
+.loan-num span:first-child{font-size:26px;font-weight:900;color:var(--ink);letter-spacing:-.02em}
+.loan-unit{font-size:13px;color:var(--ink4);font-weight:600}
+.loan-bar-track{height:8px;background:var(--ink5);border-radius:5px;overflow:hidden;margin-bottom:6px}
+.loan-bar-fill{height:100%;border-radius:5px;transition:width 1s cubic-bezier(.2,.8,.2,1)}
+.loan-pct{font-size:11px;color:var(--ink3);font-weight:600}
+.loan-edit{display:none;gap:8px;margin-top:4px}
+.loan-edit.open{display:flex}
+.loan-edit.open + .loan-updated{margin-top:6px}
+.loan-input{flex:1;padding:9px 11px;border:1.5px solid var(--ink5);border-radius:var(--r-sm);font-size:13px;font-weight:600}
+.loan-input:focus{outline:none;border-color:var(--blue-400);box-shadow:0 0 0 3px var(--blue-100)}
+.loan-save-btn{padding:9px 16px;border-radius:var(--r-sm);background:var(--ink);color:#fff;font-size:12px;font-weight:700;cursor:pointer;transition:.15s}
+.loan-save-btn:hover{background:var(--blue-500)}
+.loan-updated{font-size:10px;color:var(--ink4);margin-top:2px}
+
 .cc-memo-toggle{width:100%;text-align:left;padding:9px 12px;border-radius:var(--r-sm);background:var(--surface2);border:1px solid var(--ink5);font-size:11.5px;font-weight:700;color:var(--ink3);cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:.15s}
 .cc-memo-toggle:hover{border-color:var(--blue-300);color:var(--blue-500)}
 .cc-memo-box{display:none;margin-top:8px}
@@ -201,31 +216,9 @@ a{color:inherit;text-decoration:none}
   </div>
 
   <div class="content">
-    <div class="summary-grid">
-      <div class="summary-card">
-        <div class="summary-lb">관리 단지 수</div>
-        <div class="summary-v" id="sumComplexes">0<small>개</small></div>
-        <div class="summary-sub">현재 등록된 단지</div>
-        <div class="summary-icon">🏢</div>
-      </div>
-      <div class="summary-card">
-        <div class="summary-lb">전체 세대수</div>
-        <div class="summary-v" id="sumUnits">0<small>세대</small></div>
-        <div class="summary-sub">관리 대상 총합</div>
-        <div class="summary-icon">🏠</div>
-      </div>
-      <div class="summary-card">
-        <div class="summary-lb">전체 접수</div>
-        <div class="summary-v" id="sumDone">0<small>세대</small></div>
-        <div class="summary-sub">위임장 접수 완료</div>
-        <div class="summary-icon">📋</div>
-      </div>
-      <div class="summary-card">
-        <div class="summary-lb">평균 접수율</div>
-        <div class="summary-v" id="sumRate">0<small>%</small></div>
-        <div class="summary-sub">전체 단지 평균</div>
-        <div class="summary-icon">📊</div>
-      </div>
+    <div class="mini-summary">
+      <div class="mini-item"><span class="mini-ico">🏢</span><span class="mini-lb">관리 단지</span><span class="mini-v" id="sumComplexes">0개</span></div>
+      <div class="mini-item"><span class="mini-ico">🕐</span><span class="mini-lb">마지막 업데이트</span><span class="mini-v" id="lastUpdate2">-</span></div>
     </div>
 
     <div class="sec-hd">
@@ -350,6 +343,24 @@ function renderComplexCards(){
           <span><i style="background:#E1E8F5"></i>미접수</span>
         </div>
       </div>
+
+      <div class="loan-board">
+        <div class="loan-hd">
+          <span class="loan-t">💰 집단대출 접수 현황</span>
+          <button class="loan-edit-btn" id="loan-edit-btn-${i}" onclick="toggleLoanEdit(${i})">수정</button>
+        </div>
+        <div class="loan-display" id="loan-display-${i}">
+          <div class="loan-num"><span id="loan-val-${i}">0</span><span class="loan-unit">세대</span></div>
+          <div class="loan-bar-track"><div class="loan-bar-fill" id="loan-bar-${i}" style="width:0%;background:${c.themeColor}"></div></div>
+          <div class="loan-pct" id="loan-pct-${i}">0% 접수</div>
+        </div>
+        <div class="loan-edit" id="loan-edit-${i}">
+          <input type="number" class="loan-input" id="loan-input-${i}" placeholder="접수 세대수 입력" min="0" max="${c.totalUnits}">
+          <button class="loan-save-btn" onclick="saveLoan(${i})">저장</button>
+        </div>
+        <div class="loan-updated" id="loan-updated-${i}"></div>
+      </div>
+
       <div class="cc-actions">
         <a class="cc-btn cc-btn-primary" href="${c.siteUrl}" target="_blank">단지 앱 열기</a>
         ${c.sample?'':`<a class="cc-btn cc-btn-ghost" href="https://github.com/${c.ghOwner}/${c.ghRepo}/issues?q=label%3A위임장" target="_blank">이슈 보기</a>`}
@@ -387,6 +398,7 @@ function loadMemo(i){
     document.getElementById(`memo-text-${i}`).value = saved;
     document.getElementById(`memo-saved-${i}`).textContent = '이 기기에 저장됨';
   }
+  loadLoan(i);
 }
 function saveMemo(i){
   const key = 'jl_memo_' + COMPLEXES[i].name;
@@ -394,6 +406,42 @@ function saveMemo(i){
   localStorage.setItem(key, val);
   const savedEl = document.getElementById(`memo-saved-${i}`);
   savedEl.textContent = '✓ 저장되었습니다 (' + new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'}) + ')';
+}
+
+/* ═══ 집단대출 접수 현황 (수동 입력 · 실시간 상황판) ═══ */
+function loanKey(i){ return 'jl_loan_' + COMPLEXES[i].name; }
+function loadLoan(i){
+  const raw = localStorage.getItem(loanKey(i));
+  const data = raw ? JSON.parse(raw) : {val:0, updated:null};
+  updateLoanDisplay(i, data);
+}
+function updateLoanDisplay(i, data){
+  const c = COMPLEXES[i];
+  const pct = c.totalUnits ? Math.round(data.val/c.totalUnits*1000)/10 : 0;
+  countUp(document.getElementById(`loan-val-${i}`), data.val, '', 700);
+  document.getElementById(`loan-bar-${i}`).style.width = Math.min(pct,100)+'%';
+  document.getElementById(`loan-pct-${i}`).textContent = pct + '% 접수 (' + c.totalUnits.toLocaleString() + '세대 중)';
+  document.getElementById(`loan-updated-${i}`).textContent = data.updated ? '마지막 입력: ' + data.updated : '아직 입력된 데이터가 없습니다';
+}
+function toggleLoanEdit(i){
+  const editBox = document.getElementById(`loan-edit-${i}`);
+  const open = editBox.classList.toggle('open');
+  document.getElementById(`loan-edit-btn-${i}`).textContent = open ? '취소' : '수정';
+  if(open){
+    const raw = localStorage.getItem(loanKey(i));
+    const data = raw ? JSON.parse(raw) : {val:0};
+    document.getElementById(`loan-input-${i}`).value = data.val || '';
+    document.getElementById(`loan-input-${i}`).focus();
+  }
+}
+function saveLoan(i){
+  const input = document.getElementById(`loan-input-${i}`);
+  const val = Math.max(0, parseInt(input.value)||0);
+  const now = new Date().toLocaleString('ko-KR',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'});
+  const data = {val, updated: now};
+  localStorage.setItem(loanKey(i), JSON.stringify(data));
+  updateLoanDisplay(i, data);
+  toggleLoanEdit(i);
 }
 
 /* ═══ 통계 조회 ═══ */
@@ -441,14 +489,12 @@ async function refreshAll(){
   const btn = document.getElementById('refreshBtn');
   btn.classList.add('spinning');
   document.getElementById('lastUpdate').textContent = '조회 중…';
-  let totalUnits=0, totalDone=0, rateSum=0, okCount=0;
 
   const results = await Promise.all(COMPLEXES.map((c,i)=>fetchComplexStats(c,i)));
 
   results.forEach((res, i)=>{
     const c = COMPLEXES[i];
     const statusEl = document.getElementById(`status-${i}`);
-    totalUnits += c.totalUnits;
     if(res.ok){
       statusEl.textContent = c.sample?'예시':'정상'; statusEl.className = 'cc-status ok';
       countUp(document.getElementById(`done-${i}`), res.done, '세대', 800);
@@ -461,9 +507,6 @@ async function refreshAll(){
       document.getElementById(`seg-agree-${i}`).style.width = agreePct+'%';
       document.getElementById(`seg-deny-${i}`).style.width = denyPct+'%';
       document.getElementById(`seg-left-${i}`).style.width = Math.max(0,100-agreePct-denyPct)+'%';
-      totalDone += res.done;
-      rateSum += res.rate;
-      okCount++;
     } else {
       const isRateLimit = res.reason==='rate-limited';
       statusEl.textContent = isRateLimit?'요청제한':'오류'; statusEl.className = 'cc-status err';
@@ -472,14 +515,11 @@ async function refreshAll(){
     }
   });
 
-  countUp(document.getElementById('sumComplexes'), COMPLEXES.length, '개', 600);
-  countUp(document.getElementById('sumUnits'), totalUnits, '세대', 900);
-  countUp(document.getElementById('sumDone'), totalDone, '세대', 900);
-  const avgRate = okCount?Math.round(rateSum/okCount*10)/10:0;
-  document.getElementById('sumRate').innerHTML = avgRate + '<small>%</small>';
-
+  document.getElementById('sumComplexes').textContent = COMPLEXES.length + '개';
   const now = new Date();
-  document.getElementById('lastUpdate').textContent = `${now.getHours()}:${String(now.getMinutes()).padStart(2,'0')} 업데이트`;
+  const timeStr = `${now.getHours()}:${String(now.getMinutes()).padStart(2,'0')}`;
+  document.getElementById('lastUpdate').textContent = timeStr + ' 업데이트';
+  document.getElementById('lastUpdate2').textContent = timeStr;
   btn.classList.remove('spinning');
 }
 </script>
