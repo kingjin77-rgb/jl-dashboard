@@ -126,9 +126,6 @@ a{color:inherit;text-decoration:none}
 .cc-graph-legend{display:flex;gap:12px;margin-top:8px;font-size:10.5px;color:var(--ink3);flex-wrap:wrap}
 .cc-graph-legend span{display:inline-flex;align-items:center;gap:4px}
 .cc-graph-legend i{width:7px;height:7px;border-radius:2px;display:inline-block}
-.src-tag{display:inline-flex;align-items:center;gap:4px;font-size:9.5px;font-weight:700;padding:3px 8px;border-radius:6px;margin-top:8px}
-.src-auto{background:#E8F5ED;color:#15803D}
-.src-manual{background:var(--gold-soft);color:var(--gold-500)}
 
 .cc-actions{display:flex;gap:8px;margin-bottom:10px}
 .cc-btn{flex:1;text-align:center;padding:10px;border-radius:var(--r-sm);font-size:12.5px;font-weight:700;cursor:pointer;transition:.18s}
@@ -140,6 +137,10 @@ a{color:inherit;text-decoration:none}
 .cc-status.ok{background:#DCFCE7;color:#15803D}
 .cc-status.err{background:var(--red-soft);color:var(--red)}
 .cc-status.loading{background:var(--surface2);color:var(--ink4)}
+.src-tag{display:inline-flex;align-items:center;gap:4px;font-size:9.5px;font-weight:700;padding:3px 8px;border-radius:7px;margin-top:8px}
+.src-auto{background:#DCFCE7;color:#15803D}
+.src-manual{background:var(--gold-soft);color:var(--gold-500)}
+
 
 /* 메모란 */
 /* 집단대출 접수 실시간 상황판 */
@@ -163,9 +164,6 @@ a{color:inherit;text-decoration:none}
 .loan-save-btn{padding:9px 16px;border-radius:var(--r-sm);background:var(--ink);color:#fff;font-size:12px;font-weight:700;cursor:pointer;transition:.15s}
 .loan-save-btn:hover{background:var(--blue-500)}
 .loan-updated{font-size:10px;color:var(--ink4);margin-top:2px}
-.src-tag{display:inline-flex;align-items:center;gap:4px;font-size:9.5px;font-weight:700;padding:2px 8px;border-radius:7px;margin-top:8px}
-.src-auto{background:#E7F3FF;color:#1D6FC7}
-.src-manual{background:var(--gold-soft);color:var(--gold-500)}
 
 .cc-memo-toggle{width:100%;text-align:left;padding:9px 12px;border-radius:var(--r-sm);background:var(--surface2);border:1px solid var(--ink5);font-size:11.5px;font-weight:700;color:var(--ink3);cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:.15s}
 .cc-memo-toggle:hover{border-color:var(--blue-300);color:var(--blue-500)}
@@ -400,7 +398,6 @@ function renderComplexCards(){
           <button class="loan-save-btn" onclick="saveLoan(${i})">저장</button>
         </div>
         <div class="loan-updated" id="loan-updated-${i}"></div>
-        <div class="src-tag src-manual">✍️ 수동입력 · 이 기기 저장</div>
         <div class="src-tag src-manual">✍️ 수동입력 · 이 기기 저장</div>
       </div>
 
