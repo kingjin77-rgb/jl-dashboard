@@ -208,6 +208,12 @@ a{color:inherit;text-decoration:none}
 .reg-branch-box{display:none;margin-top:6px;padding:8px 10px;background:var(--surface2);border-radius:8px;font-size:10.5px}
 .reg-branch-box.open{display:block}
 .reg-branch-row{display:flex;justify-content:space-between;padding:3px 0;color:var(--ink3)}
+.reg-branch-box2{margin-top:6px;padding-left:14px;border-left:2px solid var(--ink5);display:flex;flex-direction:column;gap:6px}
+.reg-branch-row2{font-size:10px}
+.reg-branch-top{display:flex;justify-content:space-between;color:var(--ink3);margin-bottom:2px}
+.reg-branch-top b{color:var(--ink2);font-weight:700}
+.reg-branch-track{height:4px;background:var(--ink5);border-radius:3px;overflow:hidden}
+.reg-branch-fill{height:100%;background:var(--blue-300);border-radius:3px;transition:width .8s ease}
 .reg-branch-row b{color:var(--ink2);font-weight:700}
 .reg-caret{font-size:9px;color:var(--ink4);transition:transform .15s}
 .reg-caret.open{transform:rotate(90deg)}
@@ -845,17 +851,21 @@ function renderStatBlock(d, banks, uid, label, compact){
   const maxBankCount = banks.length ? banks[0][1].total : 1;
 
   const bankRows = banks.map(([bank, bd], bi) => {
-    const branchRows = Object.entries(bd.branches||{}).sort((a,b)=>b[1]-a[1])
-      .map(([br,cnt])=>`<div class="reg-branch-row"><span>${esc(br)}</span><b>${cnt}건</b></div>`).join('');
-    const bankId = `reg-${uid}-${bi}`;
+    const branches = Object.entries(bd.branches||{}).sort((a,b)=>b[1]-a[1]);
+    const maxBranchCount = branches.length ? branches[0][1] : 1;
+    const branchRows = branches.map(([br,cnt])=>`
+        <div class="reg-branch-row2">
+          <div class="reg-branch-top"><span>└ ${esc(br)}</span><b>${cnt}건</b></div>
+          <div class="reg-branch-track"><div class="reg-branch-fill" style="width:${(cnt/maxBranchCount*100).toFixed(0)}%"></div></div>
+        </div>`).join('');
     return `
-      <div class="reg-bank-row" onclick="toggleBranch('${bankId}')">
+      <div class="reg-bank-row">
         <div class="reg-bank-top">
-          <span class="bname"><span class="reg-caret" id="caret-${bankId}">▸</span>${esc(bank)}</span>
+          <span class="bname">🏦 ${esc(bank)}</span>
           <span class="bcount">${bd.total}건</span>
         </div>
         <div class="reg-bank-track"><div class="reg-bank-fill" style="width:${(bd.total/maxBankCount*100).toFixed(0)}%"></div></div>
-        <div class="reg-branch-box" id="branch-${bankId}">${branchRows}</div>
+        <div class="reg-branch-box2">${branchRows}</div>
       </div>`;
   }).join('');
 
@@ -871,7 +881,7 @@ function renderStatBlock(d, banks, uid, label, compact){
       <div class="reg-bar-seg" style="width:${noLoanPct}%;background:var(--gold-400)"></div>
       <div class="reg-bar-seg" style="width:${leftPct}%;background:var(--ink5)"></div>
     </div>
-    ${banks.length?`<div class="reg-bank-hd">🏦 은행별 설정 접수 현황 (클릭하면 지점 보기)</div><div class="reg-bank-list">${bankRows}</div>`:'<div style="font-size:11px;color:var(--ink4)">아직 설정 접수된 은행이 없습니다</div>'}
+    ${banks.length?`<div class="reg-bank-hd">🏦 은행 · 지점별 설정 접수 현황</div><div class="reg-bank-list">${bankRows}</div>`:'<div style="font-size:11px;color:var(--ink4)">아직 설정 접수된 은행이 없습니다</div>'}
   `;
 }
 
