@@ -450,8 +450,9 @@ function renderRegistryTopCard(c,i){
           <div class="cc-loc">${esc(c.location)}</div>
         </div>
       </div>
+      <div class="union-ref-top" id="unionref-top-${i}" style="display:none"></div>
       <div class="reg-top-summary" id="regtop-${i}">
-        <div class="reg-top-row"><span>총 세대</span><b>${c.totalUnits.toLocaleString()}세대</b></div>
+        <div class="reg-top-row"><span>등기관리 대상</span><b id="regtop-total-${i}">${c.totalUnits.toLocaleString()}세대</b></div>
         <div class="reg-top-row"><span>등기 접수(설정완료)</span><b id="regtop-done-${i}">-</b></div>
         <div class="reg-top-bar"><div class="reg-top-fill" id="regtop-bar-${i}" style="width:0%;background:${c.themeColor}"></div></div>
       </div>
@@ -776,14 +777,27 @@ function updateTopRegistrySummaries(data){
     const d = (data.complexes||{})[c.registryKey];
     const doneEl = document.getElementById(`regtop-done-${i}`);
     const barEl = document.getElementById(`regtop-bar-${i}`);
+    const totalEl = document.getElementById(`regtop-total-${i}`);
+    const unionEl = document.getElementById(`unionref-top-${i}`);
     if(!doneEl||!barEl) return;
     if(!d || d.pending){
       doneEl.textContent = '데이터 대기중';
       barEl.style.width = '0%';
+      if(d && d.isUnion && d.unionRef && unionEl){
+        unionEl.style.display = 'block';
+        unionEl.innerHTML = renderUnionRef(d.unionRef);
+      }
       return;
     }
+    // 실제 등기관리 데이터 기준 정확한 세대수로 갱신 (JS 설정값이 아닌 실데이터 우선)
+    if(totalEl) totalEl.textContent = `${d.total.toLocaleString()}세대`;
     doneEl.textContent = `${d.settingDone.toLocaleString()}세대 (${d.total?Math.round(d.settingDone/d.total*100):0}%)`;
     barEl.style.width = (d.total?Math.min(100,d.settingDone/d.total*100):0) + '%';
+
+    if(d.isUnion && d.unionRef && unionEl){
+      unionEl.style.display = 'block';
+      unionEl.innerHTML = renderUnionRef(d.unionRef);
+    }
   });
 }
 
