@@ -797,17 +797,20 @@ function renderRegistryCards(data){
   window.registryKeyToCardIndex = {};
   entries.forEach(([name], idx) => { window.registryKeyToCardIndex[name] = idx; });
 
+  const DEFAULT_PALETTE = ['#2C5AA0','#8B2E2E','#1E7A46','#B07D00','#5B2E8B','#2E6B8B','#A03D6E','#4A6741'];
+
   grid.innerHTML = entries.map(([name, d], idx) => {
+    const complexColor = d.color || DEFAULT_PALETTE[idx % DEFAULT_PALETTE.length];
     if(d.pending){
       return `
-      <div class="reg-card" id="reg-card-${idx}">
+      <div class="reg-card" id="reg-card-${idx}" style="border-top:4px solid ${complexColor}">
         <div class="reg-card-hd"><div><div class="reg-name">${esc(name)}</div><div class="reg-total">원본파일 업로드 대기중</div></div></div>
         ${d.isUnion?renderUnionRef(d.unionRef):''}
         <div class="reg-empty" style="padding:20px 0">파일 전달 시 등기 현황이 표시됩니다</div>
       </div>`;
     }
     const banks = Object.entries(d.banks||{}).sort((a,b)=>b[1].total-a[1].total);
-    const cardBody = renderStatBlock(d, banks, `${idx}`, name);
+    const cardBody = renderStatBlock(d, banks, `${idx}`, name, false, complexColor);
 
     let splitTabsHtml = '';
     if(d.split){
@@ -820,13 +823,13 @@ function renderRegistryCards(data){
         ${groupNames.map((g,gi)=>{
           const gd = d.split[g];
           const gBanks = Object.entries(gd.banks||{}).sort((a,b)=>b[1].total-a[1].total);
-          return `<div class="reg-split-panel ${gi===0?'on':''}" id="panel-${tabId}-${gi}">${renderStatBlock(gd, gBanks, `${tabId}-${gi}`, name+' '+g, true)}</div>`;
+          return `<div class="reg-split-panel ${gi===0?'on':''}" id="panel-${tabId}-${gi}">${renderStatBlock(gd, gBanks, `${tabId}-${gi}`, name+' '+g, true, complexColor)}</div>`;
         }).join('')}
       `;
     }
 
     return `
-      <div class="reg-card" id="reg-card-${idx}">
+      <div class="reg-card" id="reg-card-${idx}" style="border-top:4px solid ${complexColor}">
         <div class="reg-card-hd">
           <div><div class="reg-name">${esc(name)}</div><div class="reg-total">등기관리 대상 ${d.total.toLocaleString()}세대</div></div>
         </div>
@@ -844,27 +847,33 @@ function renderUnionRef(ref){
     <div class="union-ref-note">${esc(ref.note||'')}</div></div>`;
 }
 
-function renderStatBlock(d, banks, uid, label, compact){
+function renderStatBlock(d, banks, uid, label, compact, complexColor){
   const transferPct = d.total ? (d.transferDone/d.total*100) : 0;
   const noLoanPct = d.total ? (d.noLoan/d.total*100) : 0;
   const leftPct = Math.max(0, 100-transferPct-noLoanPct);
-  const maxBankCount = banks.length ? banks[0][1].total : 1;
+  const barColor = complexColor || 'var(--blue-500)';
+  const barColorLight = complexColor ? complexColor+'55' : 'var(--blue-300)';
+  // 정확한 비율: 각 은행 건수 ÷ 해당 단지 설정완료 총계 (최댓값 대비가 아닌 전체 대비 실제 비중)
+  const settingTotal = d.settingDone || 1;
 
   const bankRows = banks.map(([bank, bd], bi) => {
     const branches = Object.entries(bd.branches||{}).sort((a,b)=>b[1]-a[1]);
-    const maxBranchCount = branches.length ? branches[0][1] : 1;
-    const branchRows = branches.map(([br,cnt])=>`
+    const branchRows = branches.map(([br,cnt])=>{
+      const branchPct = (cnt/bd.total*100).toFixed(0); // 지점 비율은 해당 은행 내 비중
+      return `
         <div class="reg-branch-row2">
-          <div class="reg-branch-top"><span>└ ${esc(br)}</span><b>${cnt}건</b></div>
-          <div class="reg-branch-track"><div class="reg-branch-fill" style="width:${(cnt/maxBranchCount*100).toFixed(0)}%"></div></div>
-        </div>`).join('');
+          <div class="reg-branch-top"><span>└ ${esc(br)}</span><b>${cnt}건 (${branchPct}%)</b></div>
+          <div class="reg-branch-track"><div class="reg-branch-fill" style="width:${branchPct}%;background:${barColorLight}"></div></div>
+        </div>`;
+    }).join('');
+    const bankPct = (bd.total/settingTotal*100).toFixed(1);
     return `
       <div class="reg-bank-row">
         <div class="reg-bank-top">
           <span class="bname">🏦 ${esc(bank)}</span>
-          <span class="bcount">${bd.total}건</span>
+          <span class="bcount">${bd.total}건 <i>(${bankPct}%)</i></span>
         </div>
-        <div class="reg-bank-track"><div class="reg-bank-fill" style="width:${(bd.total/maxBankCount*100).toFixed(0)}%"></div></div>
+        <div class="reg-bank-track"><div class="reg-bank-fill" style="width:${bankPct}%;background:${barColor}"></div></div>
         <div class="reg-branch-box2">${branchRows}</div>
       </div>`;
   }).join('');
@@ -877,7 +886,7 @@ function renderStatBlock(d, banks, uid, label, compact){
       <div class="reg-stat"><div class="reg-stat-v">${d.inProgress}</div><div class="reg-stat-lb">진행중</div></div>
     </div>
     <div class="reg-bar">
-      <div class="reg-bar-seg" style="width:${transferPct}%;background:var(--blue-500)"></div>
+      <div class="reg-bar-seg" style="width:${transferPct}%;background:${barColor}"></div>
       <div class="reg-bar-seg" style="width:${noLoanPct}%;background:var(--gold-400)"></div>
       <div class="reg-bar-seg" style="width:${leftPct}%;background:var(--ink5)"></div>
     </div>
