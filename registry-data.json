@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-06T23:02:22.041731+00:00",
+  "updatedAt": "2026-07-07T00:15:32.751834+00:00",
   "note": "법무법인 제이엘 등기관리 원본에서 자동 집계 (개인정보 없음). 조합아파트는 조합원/일반분양 세대를 구분하여 표기.",
   "complexes": {
     "검단 이편한세상 웰카운티": {
@@ -9,7 +9,8 @@
       "noLoan": 0,
       "inProgress": 1473,
       "banks": {},
-      "isUnion": false
+      "isUnion": false,
+      "color": "#0D5C30"
     },
     "검단 롯데캐슬 넥스티엘(APT)": {
       "total": 479,
@@ -75,7 +76,8 @@
           }
         }
       },
-      "isUnion": false
+      "isUnion": false,
+      "color": "#8B2E2E"
     },
     "검단 롯데캐슬 넥스티엘(오피)": {
       "total": 43,
@@ -92,7 +94,8 @@
           }
         }
       },
-      "isUnion": false
+      "isUnion": false,
+      "color": "#8B2E2E"
     },
     "대전역 센텀비스타": {
       "total": 479,
@@ -138,7 +141,8 @@
           }
         }
       },
-      "isUnion": false
+      "isUnion": false,
+      "color": "#B07D00"
     },
     "잠실 르엘": {
       "total": 467,
@@ -740,8 +744,9 @@
         "unionUnits": 1448,
         "rentalUnits": 198,
         "generalSaleUnits": 219,
-        "note": "재건축 조합 (전체 단지 기준, 공식 입주자모집공고 자료)"
-      }
+        "note": "재건축 조합"
+      },
+      "color": "#5B2E8B"
     },
     "청량리 롯데캐슬 하이루체": {
       "total": 0,
