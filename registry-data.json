@@ -1,22 +1,41 @@
 {
-  "updatedAt": "2026-07-07T09:31:58.700789+09:00",
+  "updatedAt": "2026-07-10T08:56:01.015178+09:00",
   "note": "법무법인 제이엘 등기관리 원본에서 자동 집계 (개인정보 없음). 조합아파트는 조합원/일반분양 세대를 구분하여 표기.",
   "complexes": {
     "검단 이편한세상 웰카운티": {
       "total": 1473,
       "transferDone": 0,
-      "settingDone": 0,
-      "noLoan": 0,
+      "settingDone": 71,
+      "noLoan": 2,
       "inProgress": 1473,
-      "banks": {},
+      "banks": {
+        "주식회사 하나은행": {
+          "total": 49,
+          "branches": {
+            "검단신도시지점": 49
+          }
+        },
+        "주식회사 우리은행": {
+          "total": 20,
+          "branches": {
+            "계양지점": 20
+          }
+        },
+        "농협은행 주식회사": {
+          "total": 2,
+          "branches": {
+            "부평금융센터": 2
+          }
+        }
+      },
       "isUnion": false,
       "color": "#0D5C30"
     },
     "검단 롯데캐슬 넥스티엘(APT)": {
       "total": 479,
       "transferDone": 52,
-      "settingDone": 282,
-      "noLoan": 35,
+      "settingDone": 297,
+      "noLoan": 36,
       "inProgress": 427,
       "banks": {
         "주식회사 국민은행": {
@@ -26,15 +45,15 @@
           }
         },
         "주식회사 신한은행": {
-          "total": 37,
+          "total": 39,
           "branches": {
-            "검단신도시지점": 37
+            "검단신도시지점": 39
           }
         },
         "주식회사 하나은행": {
-          "total": 74,
+          "total": 82,
           "branches": {
-            "검단신도시지점": 74
+            "검단신도시지점": 82
           }
         },
         "중소기업은행": {
@@ -56,9 +75,9 @@
           }
         },
         "농협은행 주식회사": {
-          "total": 15,
+          "total": 18,
           "branches": {
-            "검단시티지점": 15
+            "검단시티지점": 18
           }
         },
         "수협은행": {
@@ -69,10 +88,10 @@
           }
         },
         "주식회사 우리은행": {
-          "total": 37,
+          "total": 39,
           "branches": {
             "풍무동지점": 19,
-            "김포금융센터": 18
+            "김포금융센터": 20
           }
         }
       },
@@ -100,20 +119,39 @@
     "대전역 센텀비스타": {
       "total": 479,
       "transferDone": 1,
-      "settingDone": 78,
-      "noLoan": 14,
+      "settingDone": 104,
+      "noLoan": 20,
       "inProgress": 478,
       "banks": {
-        "수협은행": {
-          "total": 2,
+        "주식회사 하나은행": {
+          "total": 79,
           "branches": {
-            "남동탄지점": 2
+            "대전역전지점": 79
           }
         },
-        "주식회사 하나은행": {
-          "total": 66,
+        "주식회사 신한은행": {
+          "total": 4,
           "branches": {
-            "대전역전지점": 66
+            "대전역금융센터": 4
+          }
+        },
+        "수협은행": {
+          "total": 3,
+          "branches": {
+            "남동탄지점": 2,
+            "대전지점": 1
+          }
+        },
+        "주식회사 국민은행": {
+          "total": 6,
+          "branches": {
+            "용전동지점": 6
+          }
+        },
+        "중소기업은행": {
+          "total": 2,
+          "branches": {
+            "대전중앙로지점": 2
           }
         },
         "한밭신용협동조합": {
@@ -122,22 +160,16 @@
             "본점": 1
           }
         },
-        "주식회사 신한은행": {
+        "농협은행 주식회사": {
+          "total": 7,
+          "branches": {
+            "대전지점": 7
+          }
+        },
+        "주식회사 우리은행": {
           "total": 2,
           "branches": {
-            "대전역금융센터": 2
-          }
-        },
-        "주식회사 국민은행": {
-          "total": 3,
-          "branches": {
-            "용전동지점": 3
-          }
-        },
-        "농협은행 주식회사": {
-          "total": 4,
-          "branches": {
-            "대전지점": 4
+            "철도타워지점": 2
           }
         }
       },
@@ -750,10 +782,10 @@
     },
     "청량리 롯데캐슬 하이루체": {
       "total": 466,
-      "transferDone": 14,
-      "settingDone": 163,
+      "transferDone": 18,
+      "settingDone": 166,
       "noLoan": 0,
-      "inProgress": 452,
+      "inProgress": 448,
       "banks": {
         "주식회사 신한은행": {
           "total": 9,
@@ -762,9 +794,9 @@
           }
         },
         "농협은행 주식회사": {
-          "total": 29,
+          "total": 32,
           "branches": {
-            "청량리금융센터": 29
+            "청량리금융센터": 32
           }
         },
         "남인천농업협동조합": {
@@ -814,11 +846,11 @@
       },
       "split": {
         "조합": {
-          "total": 127,
-          "transferDone": 14,
-          "settingDone": 127,
+          "total": 128,
+          "transferDone": 18,
+          "settingDone": 128,
           "noLoan": 0,
-          "inProgress": 113,
+          "inProgress": 110,
           "banks": {
             "주식회사 신한은행": {
               "total": 9,
@@ -827,9 +859,9 @@
               }
             },
             "농협은행 주식회사": {
-              "total": 18,
+              "total": 19,
               "branches": {
-                "청량리금융센터": 18
+                "청량리금융센터": 19
               }
             },
             "남인천농업협동조합": {
@@ -878,11 +910,11 @@
           }
         },
         "일반분양": {
-          "total": 34,
+          "total": 36,
           "transferDone": 0,
-          "settingDone": 34,
+          "settingDone": 36,
           "noLoan": 0,
-          "inProgress": 34,
+          "inProgress": 36,
           "banks": {
             "주식회사 하나은행": {
               "total": 17,
@@ -894,9 +926,9 @@
               }
             },
             "농협은행 주식회사": {
-              "total": 10,
+              "total": 12,
               "branches": {
-                "청량리금융센터": 10
+                "청량리금융센터": 12
               }
             },
             "남인천농업협동조합": {
@@ -921,11 +953,11 @@
           }
         },
         "미분류": {
-          "total": 305,
+          "total": 302,
           "transferDone": 0,
           "settingDone": 2,
           "noLoan": 0,
-          "inProgress": 305,
+          "inProgress": 302,
           "banks": {
             "농협은행 주식회사": {
               "total": 1,
