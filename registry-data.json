@@ -1,18 +1,18 @@
 {
-  "updatedAt": "2026-07-10T08:56:01.015178+09:00",
+  "updatedAt": "2026-07-13T09:45:28.561021+09:00",
   "note": "법무법인 제이엘 등기관리 원본에서 자동 집계 (개인정보 없음). 조합아파트는 조합원/일반분양 세대를 구분하여 표기.",
   "complexes": {
     "검단 이편한세상 웰카운티": {
       "total": 1473,
       "transferDone": 0,
-      "settingDone": 71,
-      "noLoan": 2,
+      "settingDone": 96,
+      "noLoan": 4,
       "inProgress": 1473,
       "banks": {
         "주식회사 하나은행": {
-          "total": 49,
+          "total": 58,
           "branches": {
-            "검단신도시지점": 49
+            "검단신도시지점": 58
           }
         },
         "주식회사 우리은행": {
@@ -26,6 +26,18 @@
           "branches": {
             "부평금융센터": 2
           }
+        },
+        "주식회사 신한은행": {
+          "total": 9,
+          "branches": {
+            "검단신도시지점": 9
+          }
+        },
+        "수협은행": {
+          "total": 7,
+          "branches": {
+            "청라지점": 7
+          }
         }
       },
       "isUnion": false,
@@ -33,10 +45,10 @@
     },
     "검단 롯데캐슬 넥스티엘(APT)": {
       "total": 479,
-      "transferDone": 52,
+      "transferDone": 59,
       "settingDone": 297,
-      "noLoan": 36,
-      "inProgress": 427,
+      "noLoan": 37,
+      "inProgress": 420,
       "banks": {
         "주식회사 국민은행": {
           "total": 49,
@@ -100,10 +112,10 @@
     },
     "검단 롯데캐슬 넥스티엘(오피)": {
       "total": 43,
-      "transferDone": 15,
+      "transferDone": 21,
       "settingDone": 19,
       "noLoan": 3,
-      "inProgress": 28,
+      "inProgress": 22,
       "banks": {
         "수협은행": {
           "total": 19,
@@ -120,7 +132,7 @@
       "total": 479,
       "transferDone": 1,
       "settingDone": 104,
-      "noLoan": 20,
+      "noLoan": 22,
       "inProgress": 478,
       "banks": {
         "주식회사 하나은행": {
