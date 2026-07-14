@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-07-13T09:45:28.561021+09:00",
+  "updatedAt": "2026-07-14T09:35:18.886195+09:00",
   "note": "법무법인 제이엘 등기관리 원본에서 자동 집계 (개인정보 없음). 조합아파트는 조합원/일반분양 세대를 구분하여 표기.",
   "complexes": {
     "검단 이편한세상 웰카운티": {
       "total": 1473,
       "transferDone": 0,
-      "settingDone": 96,
+      "settingDone": 124,
       "noLoan": 4,
       "inProgress": 1473,
       "banks": {
@@ -16,9 +16,10 @@
           }
         },
         "주식회사 우리은행": {
-          "total": 20,
+          "total": 48,
           "branches": {
-            "계양지점": 20
+            "계양지점": 20,
+            "김포금융센터": 28
           }
         },
         "농협은행 주식회사": {
@@ -45,10 +46,10 @@
     },
     "검단 롯데캐슬 넥스티엘(APT)": {
       "total": 479,
-      "transferDone": 59,
+      "transferDone": 94,
       "settingDone": 297,
       "noLoan": 37,
-      "inProgress": 420,
+      "inProgress": 385,
       "banks": {
         "주식회사 국민은행": {
           "total": 49,
