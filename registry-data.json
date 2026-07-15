@@ -1,25 +1,28 @@
 {
-  "updatedAt": "2026-07-14T09:35:18.886195+09:00",
+  "updatedAt": "2026-07-15T11:25:17.693467+09:00",
   "note": "법무법인 제이엘 등기관리 원본에서 자동 집계 (개인정보 없음). 조합아파트는 조합원/일반분양 세대를 구분하여 표기.",
   "complexes": {
     "검단 이편한세상 웰카운티": {
       "total": 1473,
       "transferDone": 0,
-      "settingDone": 124,
-      "noLoan": 4,
+      "settingDone": 286,
+      "noLoan": 12,
       "inProgress": 1473,
       "banks": {
         "주식회사 하나은행": {
-          "total": 58,
+          "total": 75,
           "branches": {
-            "검단신도시지점": 58
+            "검단신도시지점": 75
           }
         },
         "주식회사 우리은행": {
-          "total": 48,
+          "total": 132,
           "branches": {
             "계양지점": 20,
-            "김포금융센터": 28
+            "김포금융센터": 28,
+            "김포구래금융센터": 20,
+            "풍무동지점": 40,
+            "검단신도시지점": 24
           }
         },
         "농협은행 주식회사": {
@@ -29,15 +32,22 @@
           }
         },
         "주식회사 신한은행": {
-          "total": 9,
+          "total": 12,
           "branches": {
-            "검단신도시지점": 9
+            "검단신도시지점": 12
           }
         },
         "수협은행": {
           "total": 7,
           "branches": {
             "청라지점": 7
+          }
+        },
+        "주식회사 국민은행": {
+          "total": 58,
+          "branches": {
+            "아라역종합금융센터": 31,
+            "김포골드밸리종합금융센터": 27
           }
         }
       },
@@ -47,7 +57,7 @@
     "검단 롯데캐슬 넥스티엘(APT)": {
       "total": 479,
       "transferDone": 94,
-      "settingDone": 297,
+      "settingDone": 306,
       "noLoan": 37,
       "inProgress": 385,
       "banks": {
@@ -58,9 +68,9 @@
           }
         },
         "주식회사 신한은행": {
-          "total": 39,
+          "total": 40,
           "branches": {
-            "검단신도시지점": 39
+            "검단신도시지점": 40
           }
         },
         "주식회사 하나은행": {
@@ -70,9 +80,9 @@
           }
         },
         "중소기업은행": {
-          "total": 29,
+          "total": 37,
           "branches": {
-            "김포지점": 29
+            "김포지점": 37
           }
         },
         "남인천농업협동조합": {
@@ -133,7 +143,7 @@
       "total": 479,
       "transferDone": 1,
       "settingDone": 104,
-      "noLoan": 22,
+      "noLoan": 24,
       "inProgress": 478,
       "banks": {
         "주식회사 하나은행": {
@@ -795,10 +805,10 @@
     },
     "청량리 롯데캐슬 하이루체": {
       "total": 466,
-      "transferDone": 18,
+      "transferDone": 19,
       "settingDone": 166,
       "noLoan": 0,
-      "inProgress": 448,
+      "inProgress": 447,
       "banks": {
         "주식회사 신한은행": {
           "total": 9,
@@ -860,10 +870,10 @@
       "split": {
         "조합": {
           "total": 128,
-          "transferDone": 18,
+          "transferDone": 19,
           "settingDone": 128,
           "noLoan": 0,
-          "inProgress": 110,
+          "inProgress": 109,
           "banks": {
             "주식회사 신한은행": {
               "total": 9,
