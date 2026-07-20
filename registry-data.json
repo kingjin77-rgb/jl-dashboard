@@ -1,12 +1,12 @@
 {
-  "updatedAt": "2026-07-16T10:36:41.516087+09:00",
+  "updatedAt": "2026-07-20T10:35:28.326573+09:00",
   "note": "법무법인 제이엘 등기관리 원본에서 자동 집계 (개인정보 없음). 조합아파트는 조합원/일반분양 세대를 구분하여 표기.",
   "complexes": {
     "검단 이편한세상 웰카운티": {
       "total": 1473,
       "transferDone": 0,
-      "settingDone": 299,
-      "noLoan": 18,
+      "settingDone": 326,
+      "noLoan": 23,
       "inProgress": 1473,
       "banks": {
         "주식회사 국민은행": {
@@ -17,19 +17,20 @@
           }
         },
         "주식회사 우리은행": {
-          "total": 142,
+          "total": 143,
           "branches": {
             "풍무동지점": 40,
             "검단신도시지점": 24,
             "계양지점": 30,
             "김포금융센터": 28,
-            "김포구래금융센터": 20
+            "김포구래금융센터": 20,
+            "김포장기지점": 1
           }
         },
         "주식회사 하나은행": {
-          "total": 75,
+          "total": 101,
           "branches": {
-            "검단신도시지점": 75
+            "검단신도시지점": 101
           }
         },
         "수협은행": {
@@ -870,11 +871,11 @@
       },
       "split": {
         "조합": {
-          "total": 128,
+          "total": 129,
           "transferDone": 19,
           "settingDone": 128,
           "noLoan": 0,
-          "inProgress": 109,
+          "inProgress": 110,
           "banks": {
             "주식회사 신한은행": {
               "total": 9,
@@ -977,11 +978,11 @@
           }
         },
         "미분류": {
-          "total": 298,
+          "total": 297,
           "transferDone": 0,
           "settingDone": 2,
           "noLoan": 0,
-          "inProgress": 298,
+          "inProgress": 297,
           "banks": {
             "농협은행 주식회사": {
               "total": 1,
